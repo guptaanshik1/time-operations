@@ -1,0 +1,25 @@
+{
+  "name": "time-operations",
+  "version": "1.0.0",
+  "description": "Will perform different operations on time in javascript frameworks and libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guptaanshik1/time-operations.git"
+  },
+  "keywords": [
+    "time"
+  ],
+  "author": "Anshik Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guptaanshik1/time-operations/issues"
+  },
+  "homepage": "https://github.com/guptaanshik1/time-operations#readme",
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}
