@@ -1,19 +1,30 @@
 const moment = require("moment");
 
+exports.getCurrentTime = () => {
+  return moment().format('HH:mm')
+}
+
 exports.checkTimeFormat = (time) => {
-  return momemt(`${date} ${time}`).isValid();
+  const date = moment().format('YYYY-MM-DD')
+  return moment(`${date} ${time}`).isValid();
 };
 
 exports.isTimeValid = (date, time) => {
   const currentDate = moment().format("YYYY-MM-DD");
-  const currentTime = moment().format("HH:MM:SS");
-
+  const currentTime = moment().format("HH:mm");
   let dateFormatted = moment(new Date(date)).format("YYYY-MM-DD");
 
   if (currentDate === dateFormatted) {
-    return currentTime < time;
+    if (currentTime < time) return true
+    else return false
+  } else if (currentDate > dateFormatted) {
+    return false
+  } else if (currentDate < dateFormatted) {
+    return true
   }
 };
+
+// console.log(isTimeValid('2022-03-20', '23:38'))
 
 exports.addHours = (time, hrs) => {
   const addTime = moment(time, "HH:mm").add(hrs, "hours");
