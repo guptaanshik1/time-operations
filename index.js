@@ -24,8 +24,6 @@ exports.isTimeValid = (date, time) => {
   }
 };
 
-// console.log(isTimeValid('2022-03-20', '23:38'))
-
 exports.addHours = (time, hrs) => {
   const addTime = moment(time, "HH:mm").add(hrs, "hours");
   return moment(new Date(addTime)).format("HH:mm");
