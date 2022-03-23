@@ -4,7 +4,7 @@ A JavaScript package to handle time operations
 
 # Installaion
 
-```npm i @guptaanshik/time-operations```
+```npm i time-operations```
 
 # Usage
 
@@ -21,17 +21,16 @@ A JavaScript package to handle time operations
 | -----------------------   | ------------------                |
 |                           | Takes time as string as           |
 |                           | argument and returns true or      |
-| checkTimeFormat(time)     | true or false on whether the      |
-|                           | format of time is correct or      |
-|                           | not.                              |
+| checkTimeFormat(time)     | false on whether the format of    |
+|                           | time is correct or not.           |
 |                           | to.checkTimeFormat('12:00')       |
 |                           | This is will return true.         |
 | -----------------------   | ------------------------------    |
 |                           | Takes and date time as strings    |
 |                           | as argumets and returns true if   |
-| isTimeValid(date, time)   | true if time and date are         |
-|                           | of current date and time          |
-|                           | otherwise returns false.          |
+| isTimeValid(date, time)   | time and date are of current      |
+|                           | date and time otherwise           |
+|                           | returns false.                    |
 |                           | to.isTimeValid('2022-03-21',      |
 |                           | '12:00')                          |
 | -----------------------   | ------------------------------    |
