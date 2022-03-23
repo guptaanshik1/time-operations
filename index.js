@@ -73,3 +73,11 @@ exports.isTimeInRange = (time, startTime, endTime) => {
     return false;
   }
 };
+
+// const timeSum = (...time) => {
+//   return time.reduce((previousValue, currentValue) => {
+//     return previousValue + currentValue
+//   }, 0)
+// }
+
+// console.log(timeSum(1, 2, 3, 4))
