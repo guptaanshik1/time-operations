@@ -1,6 +1,6 @@
 {
   "name": "time-operations",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Will perform different operations on time in javascript frameworks and libraries",
   "main": "index.js",
   "scripts": {
