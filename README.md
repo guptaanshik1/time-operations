@@ -90,7 +90,29 @@ A JavaScript package to handle time operations
 |                           | to.isCurrentTimeInRange('1:30',   |
 |                           | '2:00', '3:00')                   |
 | -----------------------   | ------------------------------    |
+|                           | Takes different number of times   |
+|                           | in string format as parameters    |
+| timeSum(time .....)       | and adds all the time and return  |
+|                           | the resultant time.               |
+|                           | to.timeSum('12:00', '01:00')      |
+| -----------------------   | ------------------------------    |
+|                           | Takes time1 and time2 as          |
+|                           | in string format as parameters    |
+| diff(time1, time2)        | and returns the new time after    |
+|                           | subtracting the two times         |
+|                           | to.diff('01:00', '02:00')         |
+| -----------------------   | ------------------------------    |
+|                           | Takes time1 and time2 as          |
+|                           | in string format as parameters    |
+| areTimeEqual(time1,       | and returns true if the two times |
+| time2)                    | are equal or returns false        |
+|                           | otherwise.                        |
+|                           | to.areTimeEqual('01:00','01:00')  |
+| -----------------------   | ------------------------------    |
 
+# Feedback
+
+Got any feedback? Then do let me know at guptaanshik1@gmail.com
 
 # Contribute
 

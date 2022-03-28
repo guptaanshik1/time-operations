@@ -1,11 +1,11 @@
 const moment = require("moment");
 
 exports.getCurrentTime = () => {
-  return moment().format('HH:mm')
-}
+  return moment().format("HH:mm");
+};
 
 exports.checkTimeFormat = (time) => {
-  const date = moment().format('YYYY-MM-DD')
+  const date = moment().format("YYYY-MM-DD");
   return moment(`${date} ${time}`).isValid();
 };
 
@@ -15,12 +15,12 @@ exports.isTimeValid = (date, time) => {
   let dateFormatted = moment(new Date(date)).format("YYYY-MM-DD");
 
   if (currentDate === dateFormatted) {
-    if (currentTime < time) return true
-    else return false
+    if (currentTime < time) return true;
+    else return false;
   } else if (currentDate > dateFormatted) {
-    return false
+    return false;
   } else if (currentDate < dateFormatted) {
-    return true
+    return true;
   }
 };
 
@@ -74,10 +74,16 @@ exports.isTimeInRange = (time, startTime, endTime) => {
   }
 };
 
-// const timeSum = (...time) => {
-//   return time.reduce((previousValue, currentValue) => {
-//     return previousValue + currentValue
-//   }, 0)
-// }
+exports.timeSum = (...time) => {
+  return time.reduce((previousValue, currentValue) => {
+    return addTime(previousValue, currentValue);
+  }, 0);
+};
 
-// console.log(timeSum(1, 2, 3, 4))
+exports.diff = (time1, time2) => {
+  return subtractTime(time1, time2.split(":")[0], time2.split(":")[1]);
+}
+
+exports.areTimeEqual = (time1, time2) => {
+  return time1 === time2
+}
