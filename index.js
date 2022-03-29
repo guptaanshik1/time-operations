@@ -76,12 +76,12 @@ exports.isTimeInRange = (time, startTime, endTime) => {
 
 exports.timeSum = (...time) => {
   return time.reduce((previousValue, currentValue) => {
-    return addTime(previousValue, currentValue);
+    return this.addTime(previousValue, currentValue);
   }, 0);
 };
 
 exports.diff = (time1, time2) => {
-  return subtractTime(time1, time2.split(":")[0], time2.split(":")[1]);
+  return this.subtractTime(time1, time2.split(":")[0], time2.split(":")[1]);
 }
 
 exports.areTimeEqual = (time1, time2) => {
