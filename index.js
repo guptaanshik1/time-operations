@@ -1,23 +1,23 @@
 const moment = require("moment");
 
-const getCurrentTime = () => {
+exports.getCurrentTime = () => {
   return moment().format("HH:mm");
 };
 
-const getHours = (time) => {
+exports.getHours = (time) => {
   return time.split(':')[0]
 }
 
-const getMinutes = (time) => {
+exports.getMinutes = (time) => {
   return time.split(':')[1]
 }
 
-const checkTimeFormat = (time) => {
+exports.checkTimeFormat = (time) => {
   const date = moment().format("YYYY-MM-DD");
   return moment(`${date} ${time}`).isValid();
 };
 
-const isTimeValid = (date, time) => {
+exports.isTimeValid = (date, time) => {
   const currentDate = moment().format("YYYY-MM-DD");
   const currentTime = moment().format("HH:mm");
   let dateFormatted = moment(new Date(date)).format("YYYY-MM-DD");
@@ -32,39 +32,39 @@ const isTimeValid = (date, time) => {
   }
 };
 
-const addHours = (time, hrs) => {
+exports.addHours = (time, hrs) => {
   const addTime = moment(time, "HH:mm").add(hrs, "hours");
   return moment(new Date(addTime)).format("HH:mm");
 };
 
-const addMinutes = (time, mins) => {
+exports.addMinutes = (time, mins) => {
   const addTime = moment(time, "HH:mm").add(mins, "minutes");
   return moment(new Date(addTime)).format("HH:mm");
 };
 
-const addTime = (time, hrs, mins) => {
+exports.addTime = (time, hrs, mins) => {
   const addHrs = moment(time, "HH:mm").add(hrs, "hours");
   const addMins = moment(addHrs, "HH:mm").add(mins, "minutes");
   return moment(new Date(addMins)).format("HH:mm");
 };
 
-const subtractHours = (time, hrs) => {
+exports.subtractHours = (time, hrs) => {
   const subtractTime = moment(time, "HH:mm").subtract(hrs, "hours");
   return moment(new Date(subtractTime)).format("HH:mm");
 };
 
-const subtractMinutes = (time, mins) => {
+exports.subtractMinutes = (time, mins) => {
   const subtractTime = moment(time, "HH:mm").subtract(mins, "minutes");
   return moment(new Date(subtractTime)).format("HH:mm");
 };
 
-const subtractTime = (time, hrs, mins) => {
+exports.subtractTime = (time, hrs, mins) => {
   const subtractHrs = moment(time, "HH:mm").subtract(hrs, "hours");
   const subtractMins = moment(subtractHrs, "HH:mm").subtract(mins, "minutes");
   return moment(new Date(subtractMins)).format("HH:mm");
 };
 
-const isCurrentTimeInRange = (startTime, endTime) => {
+exports.isCurrentTimeInRange = (startTime, endTime) => {
   const currentTime = moment().format("HH:mm");
 
   if (startTime < currentTime && currentTime < endTime) {
@@ -74,7 +74,7 @@ const isCurrentTimeInRange = (startTime, endTime) => {
   }
 };
 
-const isTimeInRange = (time, startTime, endTime) => {
+exports.isTimeInRange = (time, startTime, endTime) => {
   if (startTime < time && time < endTime) {
     return true;
   } else {
@@ -82,27 +82,27 @@ const isTimeInRange = (time, startTime, endTime) => {
   }
 };
 
-const timeSum = (...time) => {
-  return time.reduce((previousValue, currentValue) => {
+exports.timeSum = (...time) => {
+  exports. time.reduce((previousValue, currentValue) => {
     return this.addTime(previousValue, currentValue);
   }, 0);
 };
 
-const diff = (time1, time2) => {
+exports.diff = (time1, time2) => {
   return this.subtractTime(time1, time2.split(":")[0], time2.split(":")[1]);
 }
 
-const areTimeEqual = (time1, time2) => {
+exports.areTimeEqual = (time1, time2) => {
   return time1 === time2
 }
 
-const currentTimeInGMT = () => {
+exports.currentTimeInGMT = () => {
   const GMT = moment().utc()
   const time = moment(GMT).format('HH:mm')
   return time
 }
 
-const convertTimeToGMT = (time) => {
+exports.convertTimeToGMT = (time) => {
   const date = moment().format('YYYY-MM-DD')
   const inGMT = moment(`${date} ${time}`).utc()
   const convertedTime = moment(inGMT).format('HH:mm')
