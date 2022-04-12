@@ -34,6 +34,12 @@ A JavaScript package to handle time operations
 |                           | to.isTimeValid('2022-03-21',      |
 |                           | '12:00')                          |
 | -----------------------   | ------------------------------    |
+| getHours(time)            | Takes time in string and returns  |
+|                           | the hour in the time.             |
+| -----------------------   | ------------------------------    |
+| getMinutes(time)          | Takes time in string and returns  |
+|                           | the minutes in the time.          |
+| -----------------------   | ------------------------------    |
 |                           | Takes time and hours as string    |
 |                           | as argumets and returns           |
 | addHours(time, hours)     | the new time by adding the number |
@@ -109,6 +115,15 @@ A JavaScript package to handle time operations
 |                           | otherwise.                        |
 |                           | to.areTimeEqual('01:00','01:00')  |
 | -----------------------   | ------------------------------    |
+|                           | Returns the GMT conversion        |
+| currentTimeInGMT()        | of the current time               |
+|                           | and returns true if the two times |
+| -----------------------   | ------------------------------    |
+|                           | Takes time in string format and   |
+| convertTimeToGMT(time)    | returns the new time after        |
+|                           | after converting the time to GMT  |
+|                           | to.convertTimeToGMT('20:40')      |
+
 
 # Feedback
 
