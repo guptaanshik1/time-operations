@@ -123,6 +123,18 @@ A JavaScript package to handle time operations
 | convertTimeToGMT(time)    | returns the new time after        |
 |                           | after converting the time to GMT  |
 |                           | to.convertTimeToGMT('20:40')      |
+| -----------------------   | ------------------------------    |
+|                           | Takes timezone and time in string |
+|                           | format and returns the new time   |
+|                           | after converting the time into    |
+|                           | IST.                              |
+| convertTimeToIST(         | Different timezones accepted are: |
+| timezone, time)           | {'GMT', 'UTC', 'PST', 'EST',      |
+|                           | 'ECT', 'EET', 'MST', 'MET', 'NST' |
+|                           | 'CST'}                            |
+|                           |                                   |
+|                           | to.convertTimeToIST('PST',        |
+|                           | '11:30')                          |
 
 
 # Feedback

@@ -5,12 +5,12 @@ exports.getCurrentTime = () => {
 };
 
 exports.getHours = (time) => {
-  return time.split(':')[0]
-}
+  return time.split(":")[0];
+};
 
 exports.getMinutes = (time) => {
-  return time.split(':')[1]
-}
+  return time.split(":")[1];
+};
 
 exports.checkTimeFormat = (time) => {
   const date = moment().format("YYYY-MM-DD");
@@ -83,66 +83,104 @@ exports.isTimeInRange = (time, startTime, endTime) => {
 };
 
 exports.timeSum = (...time) => {
-  exports. time.reduce((previousValue, currentValue) => {
-    return this.addTime(previousValue, currentValue);
-  }, 0);
+  const sm = time.reduce(
+    (preValue, nextValue) =>
+      this.addTime(preValue, nextValue.split(":")[0], nextValue.split(":")[1]),
+    0
+  );
+  return sm;
 };
 
 exports.diff = (time1, time2) => {
   return this.subtractTime(time1, time2.split(":")[0], time2.split(":")[1]);
-}
+};
 
 exports.areTimeEqual = (time1, time2) => {
-  return time1 === time2
-}
+  return time1 === time2;
+};
 
 exports.currentTimeInGMT = () => {
-  const GMT = moment().utc()
-  const time = moment(GMT).format('HH:mm')
-  return time
-}
+  const GMT = moment().utc();
+  const time = moment(GMT).format("HH:mm");
+  return time;
+};
 
 exports.convertTimeToGMT = (time) => {
-  const date = moment().format('YYYY-MM-DD')
-  const inGMT = moment(`${date} ${time}`).utc()
-  const convertedTime = moment(inGMT).format('HH:mm')
-  return convertedTime
-}
+  const date = moment().format("YYYY-MM-DD");
+  const inGMT = moment(`${date} ${time}`).utc();
+  const convertedTime = moment(inGMT).format("HH:mm");
+  return convertedTime;
+};
+
+// console.log(this.addTime('10:00', '11', '30'))
+
+exports.convertTimeToIST = (toZone, time) => {
+  const timezones = {
+    'GMT': this.convertTimeToGMT(time),
+    'UTC': this.convertTimeToGMT(time),
+    'PST': () => {
+      return this.addTime(time, "12", "30");
+    },
+    'EST': () => {
+      return this.addTime(time, "09", "30");
+    },
+    'ECT': () => {
+      return this.addTime(time, "03", "30");
+    },
+    'EET': () => {
+      return this.addTime(time, "03", "30");
+    },
+    'MST': () => {
+      return this.addTime(time, "11", "30");
+    },
+    'MET': () => {
+      return this.addTime(time, "03", "30");
+    },
+    'NST': () => {
+      return this.addHours(time, "08");
+    },
+    'CST': () => {
+      return this.addTime(time, "11", "30");
+    },
+  };
+  const convertedTime = timezones[toZone];
+  return typeof convertedTime === "function" ? convertedTime() : convertedTime;
+};
 
 // const convertTimeTo = (timezone1, time) => {
-//   const timezones = {
+// //   const timezones = {
 //     'GMT': convertTimeToGMT(time),
 //     'UTC': convertTimeToGMT(time),
-//     // 'ECT': 
-//     // "EET": 
-//     // 'ART': 
-//     // 'EAT': 
-//     // 'MET': 
-//     // 'NET': 
-//     // 'PLT': 
-//     // 'IST': 
-//     // 'BST': 
-//     // 'VST': 
-//     // 'CTT': 
-//     // 'JST': 
-//     // 'ACT': 
-//     // 'AET': 
-//     // 'SST': 
-//     // 'NST': 
-//     // 'MIT': 
-//     // 'HST': 
-//     // 'AST': 
-//     // 'PST': 
-//     // 'PNT': 
-//     // 'MST': 
-//     // 'CST': 
-//     // 'EST': 
-//     // 'IET': 
-//     // 'PRT': 
-//     // 'CNT': 
-//     // 'AGT': 
-//     // 'BET': 
-//     // 'CAT': 
+//     // 'ECT':
+//     // "EET":
+//     // 'ART':
+//     // 'EAT':
+//     // 'MET':
+//     // 'NET':
+//     // 'PLT':
+//     // 'IST':
+//     // 'BST':
+//     // 'VST':
+//     // 'CTT':
+//     // 'JST':
+//     // 'ACT':
+//     // 'AET':
+//     // 'SST':
+//     // 'NST':
+//     // 'MIT':
+//     // 'HST':
+//     // 'AST':
+//     // 'PST':
+//     // 'PNT':
+//     // 'MST':
+//     // 'CST':
+//     // 'EST':
+//     // 'IET':
+//     // 'PRT':
+//     // 'CNT':
+//     // 'AGT':
+//     // 'BET':
+//     // 'CAT':
 //   }
 //   const res = timezones[timezone1]
 //   return res
