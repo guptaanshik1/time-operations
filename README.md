@@ -9,7 +9,8 @@ A JavaScript package to handle time operations
 # Usage
 
 ```js
-    const to = require('time-operations')
+const to = require('time-operations')
+import to from 'time-operations'
 ```
 
 # Operations
