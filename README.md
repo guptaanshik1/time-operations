@@ -144,4 +144,4 @@ Got any feedback? Then do let me know at guptaanshik1@gmail.com
 
 # Contribute
 
-If you like to contribute, you are really welcome. Clone repository and open a pull request.
+If you like to contribute, you are really welcome. Clone repository and create a separate branch and create a pull request.
