@@ -112,35 +112,99 @@ exports.convertTimeToGMT = (time) => {
   return convertedTime;
 };
 
-// console.log(this.addTime('10:00', '11', '30'))
-
 exports.convertTimeToIST = (toZone, time) => {
   const timezones = {
-    'GMT': this.convertTimeToGMT(time),
-    'UTC': this.convertTimeToGMT(time),
-    'PST': () => {
+    GMT: this.convertTimeToGMT(time),
+    UTC: this.convertTimeToGMT(time),
+    PST: () => {
       return this.addTime(time, "12", "30");
     },
-    'EST': () => {
+    EST: () => {
       return this.addTime(time, "09", "30");
     },
-    'ECT': () => {
+    ECT: () => {
       return this.addTime(time, "03", "30");
     },
-    'EET': () => {
+    EET: () => {
       return this.addTime(time, "03", "30");
     },
-    'MST': () => {
+    MST: () => {
       return this.addTime(time, "11", "30");
     },
-    'MET': () => {
+    MET: () => {
       return this.addTime(time, "03", "30");
     },
-    'NST': () => {
+    NST: () => {
       return this.addHours(time, "08");
     },
-    'CST': () => {
+    CST: () => {
       return this.addTime(time, "11", "30");
+    },
+  };
+  const convertedTime = timezones[toZone];
+  return typeof convertedTime === "function" ? convertedTime() : convertedTime;
+};
+
+exports.convertTimeToEST = (toZone, time) => {
+  const timezones = {
+    GMT: this.convertTimeToGMT(time),
+    UTC: this.convertTimeToGMT(time),
+    IST: () => {
+      return this.subtractTime(time, "10", "30");
+    },
+    PST: () => {
+      return this.addHours(time, "03");
+    },
+    ECT: () => {
+      return time;
+    },
+    EET: () => {
+      return this.subtractHours(time, "07");
+    },
+    MST: () => {
+      return this.addHours(time, "02");
+    },
+    MET: () => {
+      return this.subtractHours(time, "06");
+    },
+    NST: () => {
+      return this.subtractTime(time, "01", "30");
+    },
+    CST: () => {
+      return this.addHours(time, "01");
+    },
+  };
+  const convertedTime = timezones[toZone];
+  return typeof convertedTime === "function" ? convertedTime() : convertedTime;
+};
+
+exports.convertTimeToPST = (toZone, time) => {
+  const timezones = {
+    GMT: this.subtractHours(time, "08"),
+    UTC: this.subtractHours(time, "08"),
+    IST: () => {
+      return this.subtractTime(time, "13", "30");
+    },
+    EST: () => {
+      return this.subtractHours(time, "03");
+    },
+    ECT: () => {
+      return this.subtractHours(time, "03");
+    },
+    EET: () => {
+      return this.subtractHours(time, "10");
+    },
+    MST: () => {
+      return this.subtractHours(time, "01");
+    },
+    MET: () => {
+      return this.subtractHours(time, "09");
+    },
+    NST: () => {
+      return this.subtractTime(time, "04", "30");
+    },
+    CST: () => {
+      this.subtractHours(time, "02");
     },
   };
   const convertedTime = timezones[toZone];
